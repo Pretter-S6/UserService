@@ -14,17 +14,25 @@ namespace UserService.Controllers
     {
 
         private readonly ILogger<UserController> _logger;
+        private IUserService iUserService;
 
         public UserController(ILogger<UserController> logger)
         {
             _logger = logger;
+            iUserService = new UserService();
         }
 
         [HttpGet]
-        public List<User> getAll()
+        public ActionResult<List<User>> getAll()
         {
-            UserData userData = new UserData();
-            return userData.getAll();
+            try
+            {
+                return Ok(iUserService.getAll());
+            }
+            catch 
+            {
+                return NotFound();
+            }
         }
     }
 }

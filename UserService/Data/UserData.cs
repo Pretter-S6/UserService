@@ -10,8 +10,7 @@ using UserService.Models;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace UserService.Controllers
-{
+namespace UserService { 
 
     public class UserData : ControllerBase
     {
