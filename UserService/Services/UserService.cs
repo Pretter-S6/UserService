@@ -29,6 +29,11 @@ namespace UserService
             return userData.getAll();
         }
 
+        public User getUserByUserID(int userId)
+        {
+            return userData.getUserByID(userId);
+        }
+
     }
 }
 

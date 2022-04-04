@@ -9,7 +9,7 @@ using UserService.Models;
 namespace UserService.Controllers
 {
     [ApiController]
-    [Route("/test")]
+    [Route("/user")]
     public class UserController : ControllerBase
     {
 
@@ -30,6 +30,19 @@ namespace UserService.Controllers
                 return Ok(iUserService.getAll());
             }
             catch 
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet("{userID}")]
+        public ActionResult<User> getUserByUserID(int userID)
+        {
+            try
+            {
+                return Ok(iUserService.getUserByUserID(userID));
+            }
+            catch
             {
                 return NotFound();
             }

@@ -18,6 +18,8 @@ namespace UserService
 
         List<User> getAll();
 
+        User getUserByUserID(int userId);
+
     }
 }
 
