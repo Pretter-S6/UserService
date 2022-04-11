@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TweetService.DataAccess;
 using UserService.Models;
 
 namespace UserService.Controllers
@@ -14,20 +15,21 @@ namespace UserService.Controllers
     {
 
         private readonly ILogger<UserController> _logger;
-        private IUserService iUserService;
+        private IUserService _service;
+        private readonly UserContext _db;
 
-        public UserController(ILogger<UserController> logger)
+        public UserController(UserContext db)
         {
-            _logger = logger;
-            iUserService = new UserService();
+            _db = db;
+            _service = new UserService(_db);
         }
 
         [HttpGet]
-        public ActionResult<List<User>> getAll()
+        public ActionResult<List<Users>> getAll()
         {
             try
             {
-                return Ok(iUserService.getAll());
+                return Ok(_service.getAll());
             }
             catch 
             {
@@ -36,11 +38,11 @@ namespace UserService.Controllers
         }
 
         [HttpGet("{userID}")]
-        public ActionResult<User> getUserByUserID(int userID)
+        public ActionResult<Users> getUserByUserID(int userID)
         {
             try
             {
-                return Ok(iUserService.getUserByUserID(userID));
+                return Ok(_service.getUserByUserID(userID));
             }
             catch
             {

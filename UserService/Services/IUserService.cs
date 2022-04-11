@@ -16,9 +16,9 @@ namespace UserService
     public interface IUserService 
     {
 
-        List<User> getAll();
+        List<Users> getAll();
 
-        User getUserByUserID(int userId);
+        Users getUserByUserID(int userId);
 
     }
 }

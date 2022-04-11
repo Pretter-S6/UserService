@@ -9,31 +9,38 @@ using System.Text;
 using UserService.Models;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using TweetService.DataAccess;
 
 namespace UserService
 {
 
     public class UserService : IUserService
     {
-        private UserData userData;
+        private readonly UserContext _db;
 
-        public UserService()
+        public UserService(UserContext db)
         {
-            userData = new UserData();
+            _db = db;
         }
 
 
 
-        public List<User> getAll()
+        public List<Users> getAll()
         {
-            return userData.getAll();
+            var users = _db.users.ToList();
+            return users;
         }
 
-        public User getUserByUserID(int userId)
+        public List<Users> getUserByUserID(int userId)
         {
-            return userData.getUserByID(userId);
+            var users = _db.users.Where(x => x.UserID == userId).ToList();
+            return users;
         }
 
+        Users IUserService.getUserByUserID(int userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
