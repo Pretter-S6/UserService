@@ -41,6 +41,47 @@ namespace UserService
         {
             throw new NotImplementedException();
         }
+
+        public int login(String username, String password)
+        {
+            String encpassword = EncryptionHelper.Encrypt(password);
+            var users = _db.users.Where(x => x.Username == username && x.Password == encpassword).ToList();
+            List<Users> ulist = users;
+            Users u = new Users();
+            foreach (Users user in ulist)
+            {
+                u = user;
+            }
+            return u.UserID;
+        }
+
+        public int register(String username, String password, String email)
+        {
+            String encpassword = EncryptionHelper.Encrypt(password);
+            var emails = _db.users.Where(x => x.Username == username).ToList();
+            List<Users> emaillist = emails;
+            var usernames = _db.users.Where(x => x.Email == email).ToList();
+            List<Users> usernamelist = usernames;
+
+            //check of er al een gebruiker bestaat met die naam of email
+            if (emaillist.Count < 1 && usernamelist.Count < 1)
+            {
+                var user = new Users { Username = username, Password = encpassword, Email = email };
+                _db.users.Add(user);
+                _db.SaveChanges();
+            }
+
+            //get userid van gemaakte user
+            var users = _db.users.Where(x => x.Username == username && x.Password == encpassword).ToList();
+            List<Users> ulist = users;
+            Users us = new Users();
+            foreach (Users user in ulist)
+            {
+                us = user;
+            }
+            return us.UserID;
+
+        }
     }
 }
 

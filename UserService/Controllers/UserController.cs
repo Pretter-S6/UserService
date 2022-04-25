@@ -49,5 +49,31 @@ namespace UserService.Controllers
                 return NotFound();
             }
         }
+
+        [HttpGet("/login")]
+        public ActionResult<List<Users>> login(String username, String password)
+        {
+            try
+            {
+                return Ok(_service.login(username, password));
+            }
+            catch
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet("/register")]
+        public ActionResult<List<Users>> register(String username, String password, String email)
+        {
+            try
+            {
+                return Ok(_service.register(username, password, email));
+            }
+            catch
+            {
+                return NotFound();
+            }
+        }
     }
 }
