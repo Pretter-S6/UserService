@@ -51,11 +51,11 @@ namespace UserService.Controllers
         }
 
         [HttpGet("/login")]
-        public ActionResult<List<Users>> login(String username, String password)
+        public ActionResult<int> login(String username, String password)
         {
             try
             {
-                return Ok(_service.login(username, password));
+                return _service.login(username, password);
             }
             catch
             {
