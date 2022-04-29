@@ -63,6 +63,17 @@ namespace UserService.Controllers
             }
         }
 
+        [HttpGet("/test")]
+        public ActionResult<List<Users>> test()
+        {
+            Users een = new Users("rienk", "ww", "test");
+            Users twee = new Users("rienk", "ww", "test");
+            Users drie = new Users("rienk", "ww", "test");
+            List<Users> users = new List<Users>();
+            users.Add(een); users.Add(twee); users.Add(drie);
+            return users;
+        }
+
         [HttpGet("/register")]
         public ActionResult<List<Users>> register(String username, String password, String email)
         {
