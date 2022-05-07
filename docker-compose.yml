@@ -1,16 +1,24 @@
-version: '3.4'
-
+version: "3.9"
 services:
-pkg:
+    pkg:
         build: 
             context: .
             dockerfile: Dockerfile
         container_name: userservice
+        ports:
+            - "0.0.0.0:5002:5002"
+        depends_on:
+            - user_db
+    user_db:
+        image: "mcr.microsoft.com/mssql/server"
+        volumes:
+          - user_volume:/var/opt/mssql
 
-  sqldata:
-    ports:
-      - 1433:1433
-    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
-    environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=Semester6
+        environment:
+            SA_PASSWORD: "Semester6"
+            ACCEPT_EULA: "Y"
+        ports:
+            - "1433"
+            - "1002:1433"
+volumes:
+  user_volume:
