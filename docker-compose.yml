@@ -8,6 +8,6 @@ services:
   app:
     image: nginx:alpine
     ports:
-      - 80:80
+      - 5002:5002
     volumes:
       - web_data:/usr/share/nginx/html:ro
