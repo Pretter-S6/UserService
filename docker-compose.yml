@@ -1,13 +1,12 @@
 version '3'
 
 volumes:
-  web_data:
-    external: true
+  UserVolume:
 
 services:
   app:
     image: nginx:alpine
     ports:
-      - 5002:5002
+      - 80:80
     volumes:
-      - web_data:/usr/share/nginx/html:ro
+      - UserVolume:/usr/share/nginx/html:ro
