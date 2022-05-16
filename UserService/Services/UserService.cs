@@ -21,6 +21,14 @@ namespace UserService
         public UserService(UserContext db)
         {
             _db = db;
+
+            if (getAll().Count !> 0)
+            {
+                var user = new Users { Username = "rienk" , Password = "ww" , Email = "engbrenghof" };
+                _db.users.Add(user);
+            }
+
+
         }
 
 
