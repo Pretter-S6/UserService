@@ -22,6 +22,7 @@ namespace UserService.Controllers
         {
             _db = db;
             _service = new UserService(_db);
+
         }
 
         [HttpGet]

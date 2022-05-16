@@ -9,6 +9,7 @@ using System.Text;
 using UserService.Models;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+
 using TweetService.DataAccess;
 
 namespace UserService
@@ -22,19 +23,16 @@ namespace UserService
         {
             _db = db;
 
-            if (getAll().Count !> 0)
-            {
-                var user = new Users { Username = "rienk" , Password = "ww" , Email = "engbrenghof" };
-                _db.users.Add(user);
-            }
-
-
         }
-
 
 
         public List<Users> getAll()
         {
+            if (getAll().Count! > 0)
+            {
+                var user = new Users { Username = "rienk", Password = "ww", Email = "engbrenghof" };
+                _db.users.Add(user);
+            }
             var users = _db.users.ToList();
             return users;
         }
