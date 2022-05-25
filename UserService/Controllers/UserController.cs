@@ -67,9 +67,9 @@ namespace UserService.Controllers
         [HttpGet("/test")]
         public ActionResult<List<Users>> test()
         {
-            Users een = new Users("rienkkk", "ww", "test");
-            Users twee = new Users("rienkkk", "ww", "test");
-            Users drie = new Users("rienkkk", "ww", "test");
+            Users een = new Users("rienkk", "ww", "test");
+            Users twee = new Users("rienkk", "ww", "test");
+            Users drie = new Users("rienkk", "ww", "test");
             List<Users> users = new List<Users>();
             users.Add(een); users.Add(twee); users.Add(drie);
             return users;
