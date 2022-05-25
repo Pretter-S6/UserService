@@ -68,8 +68,8 @@ namespace UserService.Controllers
         public ActionResult<List<Users>> test()
         {
             Users een = new Users("rienkkk", "ww", "test");
-            Users twee = new Users("rienkk", "ww", "test");
-            Users drie = new Users("rienk", "ww", "test");
+            Users twee = new Users("rienkkk", "ww", "test");
+            Users drie = new Users("rienkkk", "ww", "test");
             List<Users> users = new List<Users>();
             users.Add(een); users.Add(twee); users.Add(drie);
             return users;
