@@ -29,6 +29,19 @@ namespace UserService
         {
             services.AddControllers();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+
+                    });
+            });
+
             services.AddDbContext<UserContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Connectionstring"));
@@ -44,6 +57,8 @@ namespace UserService
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("AllowAll");
 
             app.UseRouting();
 

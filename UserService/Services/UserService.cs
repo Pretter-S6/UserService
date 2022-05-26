@@ -43,17 +43,17 @@ namespace UserService
             throw new NotImplementedException();
         }
 
-        public int login(String username, String password)
+        public Users login(String username, String password)
         {
-            String encpassword = EncryptionHelper.Encrypt(password);
-            var users = _db.users.Where(x => x.Username == username && x.Password == encpassword).ToList();
+            //String encpassword = EncryptionHelper.Encrypt(password);
+            var users = _db.users.Where(x => x.Username == username && x.Password == password).ToList();
             List<Users> ulist = users;
             Users u = new Users();
             foreach (Users user in ulist)
             {
                 u = user;
             }
-            return u.UserID;
+            return u;
         }
 
         public int register(String username, String password, String email)

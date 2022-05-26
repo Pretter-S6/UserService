@@ -52,7 +52,7 @@ namespace UserService.Controllers
         }
 
         [HttpGet("/login")]
-        public ActionResult<int> login(String username, String password)
+        public ActionResult<Users> login(String username, String password)
         {
             try
             {

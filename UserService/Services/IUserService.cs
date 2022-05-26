@@ -20,7 +20,7 @@ namespace UserService
 
         Users getUserByUserID(int userId);
 
-        int login(String username, String password);
+        Users login(String username, String password);
 
         int register(String username, String password, String email);
 
