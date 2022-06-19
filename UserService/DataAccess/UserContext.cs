@@ -10,7 +10,8 @@ namespace TweetService.DataAccess
     public class UserContext : DbContext
     {
         //entity framework
-        public UserContext(DbContextOptions options) : base(options) { }
+        public UserContext(DbContextOptions<UserContext> options) : base(options) { }
+
         public DbSet<Users> users { get; set; }
 
         public DbSet<Following> following { get; set; }

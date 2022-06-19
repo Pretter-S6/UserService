@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TweetService.DataAccess;
 using UserService.Models;
 
-namespace UserService.Controllers
+namespace UserService
 {
     [ApiController]
     [Route("/user")]
